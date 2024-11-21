@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Favorite Color</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            height: 100vh;
+            margin: 0;
+            background-color: white;
+        }
+        input, button {
+            padding: 10px;
+            margin: 10px;
+            font-size: 16px;
+        }
+        button {
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <h1>What's Your Favorite Color?</h1>
+    <input type="text" id="colorInput" placeholder="Enter a color name or hex code">
+    <button onclick="changeBackgroundColor()">Submit</button>
+
+    <script>
+        function changeBackgroundColor() {
+            const color = document.getElementById('colorInput').value;
+            document.body.style.backgroundColor = color;
+        }
+    </script>
+</body>
+</html>
