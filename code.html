@@ -3,87 +3,143 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Problem Type Classifier</title>
+    <title>Fireboy and Watergirl Prototype</title>
     <style>
+        /* General body styling */
         body {
-            font-family: Arial, sans-serif;
-            background-color: #f4f4f9;
             margin: 0;
-            padding: 0;
-            color: #333;
+            overflow: hidden;
+            background-color: #222;
+            font-family: Arial, sans-serif;
         }
-        header {
-            background-color: #4CAF50;
-            color: white;
-            text-align: center;
-            padding: 1em 0;
-            font-size: 1.5em;
+        
+        /* Game container */
+        #game-container {
+            position: relative;
+            width: 100vw;
+            height: 100vh;
+            background-color: #333;
         }
-        .container {
-            width: 80%;
-            margin: 2em auto;
-            background: white;
-            padding: 2em;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            border-radius: 8px;
+
+        /* Fireboy */
+        #fireboy {
+            width: 40px;
+            height: 40px;
+            background-color: red;
+            position: absolute;
+            top: 80%;
+            left: 10%;
+            border-radius: 50%;
         }
-        label {
-            display: block;
-            margin-bottom: 0.5em;
-            font-weight: bold;
+
+        /* Watergirl */
+        #watergirl {
+            width: 40px;
+            height: 40px;
+            background-color: cyan;
+            position: absolute;
+            top: 80%;
+            left: 20%;
+            border-radius: 50%;
         }
-        input, select, textarea {
-            width: 100%;
-            padding: 0.8em;
-            margin-bottom: 1.5em;
-            border: 1px solid #ccc;
-            border-radius: 4px;
-            box-sizing: border-box;
+
+        /* Platform */
+        .platform {
+            position: absolute;
+            background-color: #444;
+            border: 2px solid #222;
         }
-        button {
-            background-color: #4CAF50;
-            color: white;
-            border: none;
-            padding: 1em 2em;
-            cursor: pointer;
-            font-size: 1em;
-            border-radius: 4px;
+
+        #platform1 {
+            width: 400px;
+            height: 20px;
+            top: 85%;
+            left: 5%;
         }
-        button:hover {
-            background-color: #45a049;
+
+        #platform2 {
+            width: 200px;
+            height: 20px;
+            top: 65%;
+            left: 35%;
         }
-        footer {
-            text-align: center;
-            padding: 1em 0;
-            margin-top: 1em;
-            background-color: #f1f1f1;
-            color: #666;
+
+        #platform3 {
+            width: 300px;
+            height: 20px;
+            top: 45%;
+            left: 60%;
         }
     </style>
 </head>
 <body>
-    <header>
-        Problem Type Classifier
-    </header>
-    <div class="container">
-        <form action="#" method="post">
-            <label for="problem-description">Describe Your Problem:</label>
-            <textarea id="problem-description" name="problem" rows="5" placeholder="Explain your problem here..."></textarea>
-            
-            <label for="problem-type">Select the Type of Problem:</label>
-            <select id="problem-type" name="problem-type">
-                <option value="linear">Linear</option>
-                <option value="sinusoidal">Sinusoidal</option>
-                <option value="parabolic">Parabolic</option>
-                <option value="exponential">Exponential</option>
-            </select>
-            
-            <button type="submit">Submit</button>
-        </form>
+    <!-- Game Container -->
+    <div id="game-container">
+        <!-- Fireboy and Watergirl -->
+        <div id="fireboy"></div>
+        <div id="watergirl"></div>
+
+        <!-- Platforms -->
+        <div id="platform1" class="platform"></div>
+        <div id="platform2" class="platform"></div>
+        <div id="platform3" class="platform"></div>
     </div>
-    <footer>
-        © 2024 Problem Type Classifier. All rights reserved.
-    </footer>
+
+    <!-- JavaScript -->
+    <script>
+        const fireboy = document.getElementById("fireboy");
+        const watergirl = document.getElementById("watergirl");
+
+        let fireboyPosition = { x: 10, y: 80 }; // Fireboy's starting position
+        let watergirlPosition = { x: 20, y: 80 }; // Watergirl's starting position
+
+        const speed = 5;
+
+        // Fireboy controls (Arrow Keys)
+        document.addEventListener("keydown", (e) => {
+            switch (e.key) {
+                case "ArrowUp":
+                    fireboyPosition.y -= speed;
+                    break;
+                case "ArrowDown":
+                    fireboyPosition.y += speed;
+                    break;
+                case "ArrowLeft":
+                    fireboyPosition.x -= speed;
+                    break;
+                case "ArrowRight":
+                    fireboyPosition.x += speed;
+                    break;
+            }
+            updatePosition(fireboy, fireboyPosition);
+        });
+
+        // Watergirl controls (WASD keys)
+        document.addEventListener("keydown", (e) => {
+            switch (e.key) {
+                case "w":
+                    watergirlPosition.y -= speed;
+                    break;
+                case "s":
+                    watergirlPosition.y += speed;
+                    break;
+                case "a":
+                    watergirlPosition.x -= speed;
+                    break;
+                case "d":
+                    watergirlPosition.x += speed;
+                    break;
+            }
+            updatePosition(watergirl, watergirlPosition);
+        });
+
+        // Function to update the position of characters
+        function updatePosition(character, position) {
+            character.style.left = position.x + "%";
+            character.style.top = position.y + "%";
+        }
+    </script>
 </body>
 </html>
+
 
