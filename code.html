@@ -3,38 +3,87 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Favorite Color</title>
+    <title>Problem Type Classifier</title>
     <style>
         body {
             font-family: Arial, sans-serif;
-            display: flex;
-            flex-direction: column;
-            align-items: center;
-            justify-content: center;
-            height: 100vh;
+            background-color: #f4f4f9;
             margin: 0;
-            background-color: white;
+            padding: 0;
+            color: #333;
         }
-        input, button {
-            padding: 10px;
-            margin: 10px;
-            font-size: 16px;
+        header {
+            background-color: #4CAF50;
+            color: white;
+            text-align: center;
+            padding: 1em 0;
+            font-size: 1.5em;
+        }
+        .container {
+            width: 80%;
+            margin: 2em auto;
+            background: white;
+            padding: 2em;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+        label {
+            display: block;
+            margin-bottom: 0.5em;
+            font-weight: bold;
+        }
+        input, select, textarea {
+            width: 100%;
+            padding: 0.8em;
+            margin-bottom: 1.5em;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            box-sizing: border-box;
         }
         button {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 1em 2em;
             cursor: pointer;
+            font-size: 1em;
+            border-radius: 4px;
+        }
+        button:hover {
+            background-color: #45a049;
+        }
+        footer {
+            text-align: center;
+            padding: 1em 0;
+            margin-top: 1em;
+            background-color: #f1f1f1;
+            color: #666;
         }
     </style>
 </head>
 <body>
-    <h1>What's Your Favorite Color?</h1>
-    <input type="text" id="colorInput" placeholder="Enter a color name or hex code">
-    <button onclick="changeBackgroundColor()">Submit</button>
-
-    <script>
-        function changeBackgroundColor() {
-            const color = document.getElementById('colorInput').value;
-            document.body.style.backgroundColor = color;
-        }
-    </script>
+    <header>
+        Problem Type Classifier
+    </header>
+    <div class="container">
+        <form action="#" method="post">
+            <label for="problem-description">Describe Your Problem:</label>
+            <textarea id="problem-description" name="problem" rows="5" placeholder="Explain your problem here..."></textarea>
+            
+            <label for="problem-type">Select the Type of Problem:</label>
+            <select id="problem-type" name="problem-type">
+                <option value="linear">Linear</option>
+                <option value="sinusoidal">Sinusoidal</option>
+                <option value="parabolic">Parabolic</option>
+                <option value="exponential">Exponential</option>
+            </select>
+            
+            <button type="submit">Submit</button>
+        </form>
+    </div>
+    <footer>
+        © 2024 Problem Type Classifier. All rights reserved.
+    </footer>
 </body>
 </html>
+
